@@ -136,6 +136,7 @@ import { VIBE_GROUPS, VIBE_OVERVIEW, VIBE_PAGES } from "./vibecoding.js";
 import { FRONTIER_CATEGORIES, FRONTIER_OVERVIEW, FRONTIER_COMPANIES } from "./frontierAI.js";
 import { CERTIFICATIONS, CERT_CATEGORIES, SETUP_STEPS, OSS_TOOLS, MEDIA } from "./resources.js";
 import { GLOSSARY, GLOSSARY_CATEGORIES } from "./glossary.js";
+import Gorillas from "./gorillas.jsx";
 
 /* ============================================================================
    OpenSource AI Learning Lab: mission-based interface with a real local engine
@@ -4078,6 +4079,7 @@ const TOP_TABS = [
   { id: "aies", label: "Experimentation Station", icon: Cpu },
   { id: "infra", label: "Resource Hub", icon: Server },
   { id: "labs", label: "Interactive Labs", icon: FlaskConical },
+  { id: "arcade", label: "Arcade", icon: Swords },
 ];
 
 function TabBar({ active, onSelect }) {
@@ -4591,6 +4593,8 @@ function Shell() {
           <ExperimentationStation sub={sub} onSub={setSub} />
         ) : tab === "infra" ? (
           <InfrastructureCentre sub={sub} onSub={setSub} onGoStation={goStation} />
+        ) : tab === "arcade" ? (
+          <Gorillas />
         ) : null}
       </div>
 
