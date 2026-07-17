@@ -20,6 +20,10 @@ centerline:
 - So each arm carries three holes (inner / mid / tip) and the apex is the
   seventh hole, centered between the two inner holes.
 - Rounded (semicircular) ends centered on the tip holes.
+- **Scalloped ("beaded") outline**: a 12.45 mm boss lobe around each hole,
+  necked in to ~11 mm between holes, with a small raised **rib** in each neck
+  valley (the ridges on the side walls). Neck/rib sizes are *estimated* from
+  the photos — not caliper-measured — so the look is close but not exact.
 
 ## Measurements used (from calipers)
 
