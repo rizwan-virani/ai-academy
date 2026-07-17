@@ -28,8 +28,8 @@ hr      = HOLE_D / 2.0
 
 # ---- estimated cosmetic parameters ---------------------------------------
 NECK_HW = 5.6          # outline neck half-width
-RIB_HW  = 6.2          # neck-rib protrusion half-width
-RIB_LEN = 1.8          # neck-rib length
+NOTCH_W = 4.0          # V-notch mouth width (along edge)
+NOTCH_D = 2.1          # V-notch depth (into the edge)
 RIM_W   = 1.3          # perimeter wall width (back)
 RIBHW   = 0.7          # truss rib half-width
 COLLAR_R= 3.9          # raised collar radius around each hole
@@ -44,14 +44,23 @@ tipL=(-(XI+2*pitch*dx),2*pitch*dy); tipR=(XI+2*pitch*dx,2*pitch*dy)
 holes=[apex,innerL,innerR,midL,midR,tipL,tipR]
 chain=[tipL,midL,innerL,apex,innerR,midR,tipR]
 
-# ---- scalloped outline ----------------------------------------------------
+# ---- scalloped outline (bosses + necks) -----------------------------------
 parts=[Point(h).buffer(Rb,resolution=64) for h in holes]
 for a,b in zip(chain[:-1],chain[1:]):
     parts.append(LineString([a,b]).buffer(NECK_HW,cap_style="flat"))
-    m=((a[0]+b[0])/2,(a[1]+b[1])/2); u=np.array([b[0]-a[0],b[1]-a[1]]); u=u/np.linalg.norm(u)
-    parts.append(LineString([(m[0]-u[0]*RIB_LEN/2,m[1]-u[1]*RIB_LEN/2),
-                             (m[0]+u[0]*RIB_LEN/2,m[1]+u[1]*RIB_LEN/2)]).buffer(RIB_HW,cap_style="flat"))
 outline=unary_union(parts).simplify(0.02).buffer(0)
+
+# ---- inverted-triangle V-notches cut into each neck edge (both sides) ------
+notches=[]
+for a,b in zip(chain[:-1],chain[1:]):
+    a=np.array(a); b=np.array(b); m=(a+b)/2
+    d=(b-a)/np.linalg.norm(b-a); n=np.array([-d[1],d[0]])
+    for s in (1.0,-1.0):
+        base=m+s*n*(NECK_HW+0.8)
+        apex=m+s*n*(NECK_HW-NOTCH_D)
+        notches.append(Polygon([tuple(base+d*(NOTCH_W/2)),
+                                tuple(base-d*(NOTCH_W/2)), tuple(apex)]))
+outline=outline.difference(unary_union(notches)).buffer(0)
 
 # ---- back-side truss -> triangular pockets --------------------------------
 def hexagon(c, r):
