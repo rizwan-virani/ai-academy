@@ -22,8 +22,12 @@ centerline:
 - Rounded (semicircular) ends centered on the tip holes.
 - **Scalloped ("beaded") outline**: a 12.45 mm boss lobe around each hole,
   necked in to ~11 mm between holes, with a small raised **rib** in each neck
-  valley (the ridges on the side walls). Neck/rib sizes are *estimated* from
-  the photos — not caliper-measured — so the look is close but not exact.
+  valley (the ridges on the side walls).
+- **Hollow back with a truss**: hexagonal collars around each hole joined by a
+  spine + diagonal ribs, leaving **triangular recessed pockets** between the
+  holes (~3.6 mm deep). The **front face is left solid** as the flat mating
+  side. Truss/rib/pocket sizes are *estimated* from the photos — not
+  caliper-measured — so the look is close but not exact.
 
 ## Measurements used (from calipers)
 
