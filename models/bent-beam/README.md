@@ -8,30 +8,39 @@ photographs and caliper measurements. Suitable for printing in PLA.
 
 ## The part
 
-- Symmetric two-arm beam meeting at an apex.
-- **7 through-holes total**: one at the apex + three along each arm.
+Symmetric **flat-topped arch** with **7 through-holes** on one bent
+centerline:
+
+```
+      tipL - midL - innerL - APEX - innerR - midR - tipR
+```
+
+- The three top holes (innerL, APEX, innerR) sit in a short horizontal
+  **top bar**; each arm then angles **down ~44.5°** to a rounded tip.
+- So each arm carries three holes (inner / mid / tip) and the apex is the
+  seventh hole, centered between the two inner holes.
 - Rounded (semicircular) ends centered on the tip holes.
-- Obtuse bend of ~111° (each arm 34.5° below horizontal).
 
 ## Measurements used (from calipers)
 
 | Feature | Value |
 |---|---|
-| Tip-to-tip span (along axes) | 66.21 mm |
-| Apex-to-tip height | 30.17 mm |
-| Arm length (apex hole → tip hole) | 34.00 mm |
+| Overall width (tip to tip) | 66.21 mm |
+| Overall height | 30.17 mm |
 | Arm width | 12.45 mm |
 | Thickness | 6.00 mm |
 | Hole inner diameter | 4.50 mm |
 
-Derived: hole pitch along each arm = 34.00 / 3 = **11.33 mm**;
-tip / bend radius = 12.45 / 2 = **6.225 mm**.
+Hole layout was reconstructed from the symmetric ("^") photo by mirror-
+symmetry rectification (removing camera perspective), then scaled so the
+overall width matches 66.21 mm. Derived values:
 
-The reconstruction reproduces the arm length, width, thickness, hole pitch
-and hole diameter exactly, and the overall span/height to within ~0.2 mm.
-(The original's measurements are mutually consistent to ~0.2 mm under the
-"feature-to-feature" reading; a bounding-box caliper reading of the widest
-points would read ~2 mm larger because the rounded ends bulge sideways.)
+- hole pitch along each arm ≈ **12.8 mm**
+- apex → inner-hole horizontal offset ≈ **8.6 mm**
+- tip / bend radius = 12.45 / 2 = **6.225 mm**
+
+The model matches width and height to within ~0.2 mm and reproduces the
+arm width, thickness and hole diameter exactly.
 
 ## Notes / choices
 
